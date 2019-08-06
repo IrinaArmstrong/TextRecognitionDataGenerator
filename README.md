@@ -133,6 +133,23 @@ Simplified:
 
 ![28](samples/28.jpg "1")
 
+## Create images with Cyrillic (Russian) text [by IrinaArmstrong]
+
+Added support of Cyrillic alphabet, in particular of Russian language words generation.
+For this added few cyrillic fonts and extended Russian dictionary, taken from [there](https://github.com/danakt/russian-words.git).
+
+To generate images use: `python run.py -l -ru`
+The resulting images will be placed into a subdirectory 'russian' of the directory 'out' in '.png' extention.
+
+Some examples:
+
+![29](TextRecognitionDataGenerator/out/russian/0.png)
+
+![30](TextRecognitionDataGenerator/out/russian/3.png)
+
+![29](TextRecognitionDataGenerator/out/russian/4.png)
+
+
 ## Add new fonts
 
 The script picks a font at random from the *fonts* directory.
