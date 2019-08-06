@@ -31,7 +31,7 @@ def parse_arguments():
         type=str,
         nargs="?",
         help="The output directory",
-        default="out/",
+        default="out/russian/",
     )
     parser.add_argument(
         "-i",
@@ -46,8 +46,8 @@ def parse_arguments():
         "--language",
         type=str,
         nargs="?",
-        help="The language to use, should be fr (French), en (English), es (Spanish), de (German), or cn (Chinese).",
-        default="en"
+        help="The language to use, should be fr (French), en (English), es (Spanish), de (German), or cn (Chinese), or ru (Russian).",
+        default="ru"
     )
     parser.add_argument(
         "-c",
@@ -55,7 +55,7 @@ def parse_arguments():
         type=int,
         nargs="?",
         help="The number of images to be created.",
-        default=1000
+        default=10
     )
     parser.add_argument(
         "-rs",
@@ -91,7 +91,7 @@ def parse_arguments():
         type=int,
         nargs="?",
         help="Define how many words should be included in each generated sample. If the text source is Wikipedia, this is the MINIMUM length",
-        default=1
+        default=10
     )
     parser.add_argument(
         "-r",
@@ -106,7 +106,7 @@ def parse_arguments():
         type=int,
         nargs="?",
         help="Define the height of the produced images if horizontal, else the width",
-        default=32,
+        default=64,
     )
     parser.add_argument(
         "-t",
@@ -122,7 +122,7 @@ def parse_arguments():
         type=str,
         nargs="?",
         help="Define the extension to save the image with",
-        default="jpg",
+        default="png",
     )
     parser.add_argument(
         "-k",
@@ -174,13 +174,14 @@ def parse_arguments():
         "--handwritten",
         action="store_true",
         help="Define if the data will be \"handwritten\" by an RNN",
+        # default=True
     )
     parser.add_argument(
         "-na",
         "--name_format",
         type=int,
         help="Define how the produced files will be named. 0: [TEXT]_[ID].[EXT], 1: [ID]_[TEXT].[EXT] 2: [ID].[EXT] + one file labels.txt containing id-to-label mappings",
-        default=0,
+        default=2,
     )
     parser.add_argument(
         "-d",
@@ -281,6 +282,8 @@ def load_fonts(lang):
 
     if lang == 'cn':
         return [os.path.join('fonts/cn', font) for font in os.listdir('fonts/cn')]
+    elif lang == 'ru':
+        return [os.path.join('fonts/ru', font) for font in os.listdir('fonts/ru')]
     else:
         return [os.path.join('fonts/latin', font) for font in os.listdir('fonts/latin')]
 
